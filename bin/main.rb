@@ -59,12 +59,12 @@ puts "You have tweeted #{client.user.tweets_count} time(s)."
 puts "You have #{client.user.followers_count} follower(s)."
 # puts "You tweets have been liked #{client.user.favourites_count} time(s)."
 
-# Like a retweet --def like_retweets(tweets, fav_tweets = [])
-tweets = YAML.load_file('tweets.yml')
-fav_tweets = [] # put in parameter
+# Like a retweet --def like_retweets(tweets = [], fav_tweets = [])
+# tweets = YAML.load_file('tweets.yml')
+# fav_tweets = [] # put in parameter
 tweets.each do |twit|
   unliked_tweets = client.retweets(twit) - fav_tweets
-  fav_tweets += client.fav(unliked_tweets)
+  fav_tweets += client.fav(unliked_tweets) unless unliked_tweets.size.zero?
 end
 File.write('fav_tweets.yml', YAML.dump(fav_tweets)) # should i put this in new method called store_fav_tweets(fav_tweets)?
 
