@@ -15,4 +15,8 @@ module Bot
     end
     File.write('fav_tweets.yml', YAML.dump(fav_tweets)) unless fav_tweets.empty?
   end
+
+  def retweets_received(tweets)
+    tweets.reduce(0) { |sum, tweet| sum + tweet.retweet_count }
+  end
 end

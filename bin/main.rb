@@ -74,7 +74,8 @@ end
 # tweets.each do |twit|
 #   unliked_tweets = client.retweets(twit) - fav_tweets
 #   fav_tweets += client.fav(unliked_tweets) unless unliked_tweets.empty?
-# File.write('fav_tweets.yml', YAML.dump(fav_tweets)) # should i put this in new method called store_fav_tweets(fav_tweets)?
+# File.write('fav_tweets.yml', YAML.dump(fav_tweets))
+# should i put the line above me in new method called store_fav_tweets(fav_tweets)?
 
 # count retweet likes given --def retweets_liked(fav_tweets)
 if YAML.load_file('fav_tweets.yml').is_a?(Array)
