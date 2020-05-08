@@ -31,16 +31,20 @@ if response == 'y'
 end
 
 # Add tweet to record if tweet was made --refactor --def store_tweet(tweets = [])
-# if first tweet record -- when client.user.tweets_count.zero? call store_tweet
-tweets = client.user_timeline('qualitycodebot', count: 1)
-File.write('tweets.yml', YAML.dump(tweets))
+# if first tweet -- when client.user.tweets_count.zero? call store_tweet
+puts 'Storing tweet...'
+client.user.tweets_count.zero ? store_tweet : store_tweet(YAML.load_file('tweets.yml'))
 
-# if subsequent tweet record
-tweets = YAML.load_file('tweets.yml')
-tweets << client.user_timeline('qualitycodebot', count: 1).first
-File.write('tweets.yml', YAML.dump(tweets))
+# tweets = client.user_timeline('qualitycodebot', count: 1)
+# File.write('tweets.yml', YAML.dump(tweets))
+
+# # if subsequent tweet record
+# tweets = YAML.load_file('tweets.yml')
+# tweets << client.user_timeline('qualitycodebot', count: 1).first
+# File.write('tweets.yml', YAML.dump(tweets))
 
 # Count retweets --refactor --def count(tweets, count_choice)
+puts 'Would you like to see your account stats? y/n'
 tweets = YAML.load_file('tweets.yml')
 tweets.reduce(0) { |sum, twit| sum + twit.retweet_count }
 
@@ -48,8 +52,10 @@ tweets.reduce(0) { |sum, twit| sum + twit.retweet_count }
 tweets = YAML.load_file('tweets.yml')
 tweets.reduce(0) { |sum, twit| sum + twit.favorite_count }
 
-# Shows account status
+# Count total number of tweets
 puts "You have tweeted #{client.user.tweets_count} time(s)."
+
+# Count number of followers
 puts "You have #{client.user.followers_count} follower(s)."
 # puts "You tweets have been liked #{client.user.favourites_count} time(s)."
 
