@@ -45,14 +45,19 @@ client.user.tweets_count.zero? ? store_tweet : store_tweet(YAML.load_file('tweet
 # tweets << client.user_timeline('qualitycodebot', count: 1).first
 # File.write('tweets.yml', YAML.dump(tweets))
 
-# Count retweets --refactor --def count(tweets, count_choice)
-puts 'Would you like to see your account stats? y/n'
-tweets = YAML.load_file('tweets.yml')
-tweets.reduce(0) { |sum, twit| sum + twit.retweet_count }
 
-# Count tweet likes received
-tweets = YAML.load_file('tweets.yml')
-tweets.reduce(0) { |sum, twit| sum + twit.favorite_count }
+
+
+# Count number of tweets that have been retweeted
+puts 'Would you like to see your account stats? y/n'
+retweets_received(YAML.load_file('tweets.yml'))
+# tweets = YAML.load_file('tweets.yml')
+# tweets.reduce(0) { |sum, twit| sum + twit.retweet_count }
+
+# Count number tweet likes received
+likes_received(YAML.load_file('tweets.yml'))
+# tweets = YAML.load_file('tweets.yml')
+# tweets.reduce(0) { |sum, twit| sum + twit.favorite_count }
 
 # Count total number of tweets
 puts "You have tweeted #{client.user.tweets_count} time(s)."
