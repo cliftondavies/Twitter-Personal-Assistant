@@ -19,4 +19,8 @@ module Bot
   def retweets_received(tweets)
     tweets.reduce(0) { |sum, tweet| sum + tweet.retweet_count }
   end
+
+  def likes_received(tweets)
+    tweets.reduce(0) { |sum, tweet| sum + tweet.favorite_count }
+  end
 end
