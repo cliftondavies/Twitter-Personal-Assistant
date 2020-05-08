@@ -16,11 +16,11 @@ module Bot
     File.write('fav_tweets.yml', YAML.dump(fav_tweets)) unless fav_tweets.empty?
   end
 
-  def retweets_received(tweets)
+  def self.retweets_received(tweets)
     tweets.reduce(0) { |sum, tweet| sum + tweet.retweet_count }
   end
 
-  def likes_received(tweets)
+  def self.likes_received(tweets)
     tweets.reduce(0) { |sum, tweet| sum + tweet.favorite_count }
   end
 end
