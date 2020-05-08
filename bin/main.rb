@@ -77,8 +77,11 @@ end
 # File.write('fav_tweets.yml', YAML.dump(fav_tweets)) # should i put this in new method called store_fav_tweets(fav_tweets)?
 
 # count retweet likes given --def retweets_liked(fav_tweets)
-fav_tweets = YAML.load_file('fav_tweets.yml')
-fav_tweets.size
+if YAML.load_file('fav_tweets.yml').is_a?(Array)
+  puts "You have liked #{YAML.load_file('fav_tweets.yml').size} retweets of your tweets"
+end
+# fav_tweets = YAML.load_file('fav_tweets.yml')
+# fav_tweets.size
 
 # client.user_timeline('qualitycodebot').each do |obj|
 #   puts obj.favorite_count
