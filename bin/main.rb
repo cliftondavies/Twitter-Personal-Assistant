@@ -9,7 +9,12 @@ client = Twitter::REST::Client.new(Client.config)
 
 # Tweet
 puts 'Would you like to tweet? Enter y/n'
+valid = %w[y n]
 response = gets.chomp.downcase
+until valid.include?(response)
+  puts 'Typo: Please enter y/n'
+  response = gets.chomp.downcase
+end
 if response == 'y'
   puts 'Please type in your tweet'
   tweet = gets.chomp
@@ -17,11 +22,12 @@ if response == 'y'
   puts 'Tweet successful!'
   puts "Tweet content: #{tweet}"
   puts "No. of characters: #{tweet.length}"
+  # Store tweet
+  puts 'Storing tweet...'
+  client.user.tweets_count.zero? ? store_tweet : store_tweet(YAML.load_file('tweets.yml'))
+else
+  puts 'Borrring... You have chosen not to tweet!'
 end
-
-# Store tweet
-puts 'Storing tweet...'
-client.user.tweets_count.zero? ? store_tweet : store_tweet(YAML.load_file('tweets.yml'))
 
 # Like retweets
 puts 'Would you like to favorite some retweets of your posts that you have not liked? Enter y/n'
