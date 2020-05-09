@@ -9,8 +9,8 @@ module Bot
   end
 
   def self.like_retweets(tweets, fav_tweets = [])
-    tweets.each do |twit|
-      unliked_tweets = client.retweets(twit) - fav_tweets
+    tweets.each do |tweet|
+      unliked_tweets = client.retweets(tweet) - fav_tweets
       fav_tweets += client.fav(unliked_tweets) unless unliked_tweets.size.zero?
     end
     File.write('fav_tweets.yml', YAML.dump(fav_tweets)) unless fav_tweets.empty?
