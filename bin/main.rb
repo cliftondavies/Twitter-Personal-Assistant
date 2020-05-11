@@ -2,6 +2,7 @@
 require 'dotenv/load'
 require 'twitter'
 require './lib/client.rb'
+require './lib/user.rb'
 require 'yaml'
 
 # Initialise Rest client
