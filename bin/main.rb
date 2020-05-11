@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'dotenv/load'
 require 'twitter'
-require './client.rb'
+require './lib/client.rb'
 require 'yaml'
 
 # Initialise Rest client
@@ -19,7 +19,7 @@ if response == 'y'
   puts "No. of characters: #{tweet.length}"
   # Store tweet
   puts 'Storing tweet...'
-  client.user.tweets_count.zero? ? store_tweet : store_tweet(YAML.load_file('tweets.yml'))
+  client.user.tweets_count.zero? ? User.store_tweet : User.store_tweet(YAML.load_file('tweets.yml'))
 else
   puts 'Borrring... You have chosen not to tweet!'
 end
@@ -29,12 +29,12 @@ puts 'Would you like to favorite some retweets of your posts that you have not l
 puts "Enter 'y' for 'yes', or press any other key to skip"
 reply = gets.chomp.downcase
 if reply == 'y'
-  if client.user.tweets_count.zero? || retweets_received.zero?
+  if client.user.tweets_count.zero? || User.retweets_received(YAML.load_file('tweets.yml')).zero?
     puts 'You have not received any retweets'
   elsif YAML.load_file('fav_tweets.yml').is_a?(Array)
-    like_retweets(YAML.load_file('tweets.yml'), YAML.load_file('fav_tweets.yml'))
+    User.like_retweets(YAML.load_file('tweets.yml'), YAML.load_file('fav_tweets.yml'))
   else
-    like_retweets
+    User.like_retweets(YAML.load_file('tweets.yml'))
   end
 else
   puts 'Nooo?! Your retweeters will be disaapointed.'
@@ -52,10 +52,10 @@ if choice == 'y'
 
   if YAML.load_file('tweets.yml').is_a?(Array)
     # Total retweets received
-    puts "#{retweets_received(YAML.load_file('tweets.yml'))} of your tweets have been retweeted."
+    puts "#{User.retweets_received(YAML.load_file('tweets.yml'))} of your tweets have been retweeted."
 
     # Total likes received
-    puts "#{likes_received(YAML.load_file('tweets.yml'))} of your tweets have been liked."
+    puts "#{User.likes_received(YAML.load_file('tweets.yml'))} of your tweets have been liked."
   else
     puts 'You have not received any tweet likes or retweets.'
   end
