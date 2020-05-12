@@ -31,7 +31,7 @@ puts 'Would you like to favorite some retweets of your posts that you have not l
 puts "Enter 'y' for 'yes', or press any other key to skip"
 reply = gets.chomp.downcase
 if reply == 'y'
-  binding.pry
+  # binding.pry
   if client.user.tweets_count.zero? || User.retweets_received(YAML.load_file('tweets.yml')).zero?
     puts 'You have not received any retweets'
   elsif YAML.load_file('fav_tweets.yml').is_a?(Array)

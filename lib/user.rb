@@ -11,6 +11,7 @@ module User
   end
 
   def self.like_retweets(tweets, fav_tweets = [])
+    tweets = CLIENT.statuses(tweets)
     tweets.each do |tweet|
       unliked_tweets = CLIENT.retweets(tweet) - fav_tweets
       fav_tweets += CLIENT.fav(unliked_tweets) unless unliked_tweets.size.zero?
@@ -19,10 +20,12 @@ module User
   end
 
   def self.retweets_received(tweets)
+    tweets = CLIENT.statuses(tweets)
     tweets.reduce(0) { |sum, tweet| sum + tweet.retweet_count }
   end
 
   def self.likes_received(tweets)
+    tweets = CLIENT.statuses(tweets)
     tweets.reduce(0) { |sum, tweet| sum + tweet.favorite_count }
   end
 end
