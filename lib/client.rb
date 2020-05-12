@@ -9,4 +9,6 @@ module Client
       access_token_secret: ENV['ACCESS_TOKEN_SECRET']
     }
   end
+
+  C = Twitter::REST::Client.new(config)
 end

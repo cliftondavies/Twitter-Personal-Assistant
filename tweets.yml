@@ -147,3 +147,77 @@
     :favorited: false
     :retweeted: false
     :lang: en
+- !ruby/object:Twitter::Tweet
+  attrs:
+    :created_at: Tue May 12 01:18:31 +0000 2020
+    :id: 1260016472698400768
+    :id_str: '1260016472698400768'
+    :text: Test 3
+    :truncated: false
+    :entities:
+      :hashtags: []
+      :symbols: []
+      :user_mentions: []
+      :urls: []
+    :source: <a href="https://thequalitycodebot.io" rel="nofollow">The Quality Code
+      Bot</a>
+    :in_reply_to_status_id: 
+    :in_reply_to_status_id_str: 
+    :in_reply_to_user_id: 
+    :in_reply_to_user_id_str: 
+    :in_reply_to_screen_name: 
+    :user:
+      :id: 1258062832542928899
+      :id_str: '1258062832542928899'
+      :name: The Quality Code Bot
+      :screen_name: qualitycodebot
+      :location: ''
+      :description: Hi! I tweet daily about one coding Best Practice or Error associated
+        with HTML/CSS/Bootstrap/SASS/JavaScript/React/Ruby/RSpec/SQL/Rails...
+      :url: 
+      :entities:
+        :description:
+          :urls: []
+      :protected: false
+      :followers_count: 1
+      :friends_count: 0
+      :listed_count: 0
+      :created_at: Wed May 06 15:55:50 +0000 2020
+      :favourites_count: 1
+      :utc_offset: 
+      :time_zone: 
+      :geo_enabled: false
+      :verified: false
+      :statuses_count: 3
+      :lang: 
+      :contributors_enabled: false
+      :is_translator: false
+      :is_translation_enabled: false
+      :profile_background_color: F5F8FA
+      :profile_background_image_url: 
+      :profile_background_image_url_https: 
+      :profile_background_tile: false
+      :profile_image_url: http://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png
+      :profile_image_url_https: https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png
+      :profile_link_color: 1DA1F2
+      :profile_sidebar_border_color: C0DEED
+      :profile_sidebar_fill_color: DDEEF6
+      :profile_text_color: '333333'
+      :profile_use_background_image: true
+      :has_extended_profile: false
+      :default_profile: true
+      :default_profile_image: true
+      :following: false
+      :follow_request_sent: false
+      :notifications: false
+      :translator_type: none
+    :geo: 
+    :coordinates: 
+    :place: 
+    :contributors: 
+    :is_quote_status: false
+    :retweet_count: 0
+    :favorite_count: 0
+    :favorited: false
+    :retweeted: false
+    :lang: en
