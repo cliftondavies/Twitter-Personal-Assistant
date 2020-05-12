@@ -11,6 +11,10 @@ response = gets.chomp.downcase
 if response == 'y'
   puts 'Please type in your tweet'
   tweet = gets.chomp
+  while tweet.length > 280
+    puts 'Please reduce number of characters to 280 or less.'
+    tweet = gets.chomp
+  end
   Client::C.update(tweet)
   puts 'Tweet successful!'
   puts "Tweet content: #{tweet}"
@@ -27,7 +31,6 @@ puts 'Would you like to favorite some retweets of your posts that you have not l
 puts "Enter 'y' for 'yes', or press any other key to skip"
 reply = gets.chomp.downcase
 if reply == 'y'
-  # binding.pry
   if Client::C.user.tweets_count.zero? || User.retweets_received(YAML.load_file('tweets.yml')).zero?
     puts 'You have not received any retweets'
   elsif YAML.load_file('fav_tweets.yml').is_a?(Array)
