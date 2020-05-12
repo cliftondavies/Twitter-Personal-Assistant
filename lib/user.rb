@@ -7,6 +7,7 @@ module User
   def self.store_tweet(tweets = [])
     tweets += Client::C.user_timeline(Client::C.user.id, count: 1)
     File.write('tweets.yml', YAML.dump(tweets))
+    tweets
   end
 
   def self.like_retweets(tweets, fav_tweets = [])
