@@ -19,6 +19,7 @@ module User
       fav_tweets += Client::C.fav(unliked_tweets) unless unliked_tweets.empty?
     end
     File.write('fav_tweets.yml', YAML.dump(fav_tweets)) unless no_unliked
+    fav_tweets
   end
 
   def self.retweets_received(tweets)
