@@ -12,11 +12,13 @@ module User
 
   def self.like_retweets(tweets, fav_tweets = [])
     tweets = CLIENT.statuses(tweets)
+    no_unliked = true
     tweets.each do |tweet|
       unliked_tweets = CLIENT.retweets(tweet) - fav_tweets
-      fav_tweets += CLIENT.fav(unliked_tweets) unless unliked_tweets.size.zero?
+      no_unliked = false unless unliked_tweets.empty?
+      fav_tweets += CLIENT.fav(unliked_tweets) unless unliked_tweets.empty?
     end
-    File.write('fav_tweets.yml', YAML.dump(fav_tweets)) unless fav_tweets.empty?
+    File.write('fav_tweets.yml', YAML.dump(fav_tweets)) unless no_unliked
   end
 
   def self.retweets_received(tweets)
