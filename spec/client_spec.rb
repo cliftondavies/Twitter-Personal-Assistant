@@ -1,3 +1,4 @@
+require 'twitter'
 require './lib/client.rb'
 
 describe Client do
