@@ -5,7 +5,7 @@ require 'yaml'
 
 module User
   def self.store_tweet(tweets = [])
-    tweets += Client::C.user_timeline('qualitycodebot', count: 1)
+    tweets += Client::C.user_timeline(Client::C.user.id, count: 1)
     File.write('tweets.yml', YAML.dump(tweets))
   end
 
