@@ -16,4 +16,18 @@ describe User do
       end
     end
   end
+
+  describe 'like_retweets' do
+    context 'when user has not liked any retweets' do
+      it '' do
+        expect
+      end
+    end
+
+    context 'when user has liked at least one retweet' do
+      it '' do
+        expect
+      end
+    end
+  end
 end
