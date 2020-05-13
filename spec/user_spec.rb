@@ -18,17 +18,33 @@ describe User do
     end
   end
 
-  describe '.like_retweets' do
-    context 'when user has no favorite tweets' do
-      it 'returns an array with result of running like_retweets' do
-        expect(User.like_retweets(tweets)).to be_an(Array)
+  # describe '.like_retweets' do
+  #   context 'when user has no favorite tweets' do
+  #     it 'returns an array with result of running like_retweets' do
+  #       expect(User.like_retweets(tweets)).to be_an(Array)
+  #     end
+  #   end
+
+  #   context 'when user has favorite tweets' do
+  #     it 'returns an array with result of running like_retweets' do
+  #       fav_tweets = Client::C.favorites(Client::C.user.id)
+  #       expect(User.like_retweets(tweets, fav_tweets)).to be_an(Array)
+  #     end
+  #   end
+  # end
+
+  describe '.like_mentions' do
+    context 'when user has no mentions stored' do
+      it 'returns an array with result of running like_mentions' do
+        expect(User.like_mentions).to be_an(Array)
       end
     end
 
-    context 'when user has favorite tweets' do
-      it 'returns an array with result of running like_retweets' do
-        fav_tweets = Client::C.favorites(Client::C.user.id)
-        expect(User.like_retweets(tweets, fav_tweets)).to be_an(Array)
+    context 'when user has mentions stored' do
+      it 'returns an array with result of running like_mentions' do
+        # fav_tweets = Client::C.favorites(Client::C.user.id)
+        mentions = Client::C.mentions
+        expect(User.like_mentions(mentions)).to be_an(Array)
       end
     end
   end
