@@ -33,4 +33,11 @@ describe User do
       end
     end
   end
+
+  describe 'retweets_received' do
+    it "returns the number of times the user's tweets have been retweeted, as an integer" do
+      tweets = Client::C.user_timeline(Client::C.user.id)
+      expect(User.retweets_received(tweets)).to be_an(Integer)
+    end
+  end
 end
