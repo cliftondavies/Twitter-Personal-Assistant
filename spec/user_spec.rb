@@ -3,24 +3,34 @@ require './lib/user.rb'
 
 describe User do
   describe '.store_tweet' do
-    context 'when user has only tweeted once' do
-      it 'returns an array containing one tweet' do
-        expect(User.store_tweet.size).to eql(1)
+    context 'when user makes first tweet' do
+      it 'returns an array containing first tweet' do
+        expect(User.store_tweet).to be_an(Array)
       end
     end
 
     context 'when user makes subsequent tweets' do
-      it 'returns an array containing more than one tweet' do
-        tweet = Client::C.user_timeline(Client::C.user.id, count: 1)
-        expect(User.store_tweet(tweet).size).to be > 1
+      it 'returns an array with subsequent tweets' do
+        tweets = Client::C.user_timeline(Client::C.user.id)
+        expect(User.store_tweet(tweets)).to be_an(Array)
       end
     end
   end
 
   describe 'like_retweets' do
-    it 'returns retweets that have been liked' do
-      tweet = Client::C.user_timeline(Client::C.user.id, count: 1)
-      expect(User.like_retweets(tweet, tweet).size).to eql(tweet.first.retweet_count)
+    context 'when user has no favorite tweets' do
+      it 'returns an array with result of running like_retweets' do
+        tweets = Client::C.user_timeline(Client::C.user.id)
+        expect(User.like_retweets(tweets)).to be_an(Array)
+      end
+    end
+
+    context 'when user has favorite tweets' do
+      it 'returns an array with result of running like_retweets' do
+        tweets = Client::C.user_timeline(Client::C.user.id)
+        fav_tweets = Client::C.favorites(Client::C.user.id)
+        expect(User.like_retweets(tweets, fav_tweets)).to be_an(Array)
+      end
     end
   end
 end
