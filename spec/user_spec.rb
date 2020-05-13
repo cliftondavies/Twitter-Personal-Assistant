@@ -17,7 +17,7 @@ describe User do
     end
   end
 
-  describe 'like_retweets' do
+  describe '.like_retweets' do
     context 'when user has no favorite tweets' do
       it 'returns an array with result of running like_retweets' do
         tweets = Client::C.user_timeline(Client::C.user.id)
@@ -34,14 +34,14 @@ describe User do
     end
   end
 
-  describe 'retweets_received' do
+  describe '.retweets_received' do
     it "returns the number of times the user's tweets have been retweeted, as an integer" do
       tweets = Client::C.user_timeline(Client::C.user.id)
       expect(User.retweets_received(tweets)).to be_an(Integer)
     end
   end
 
-  describe 'likes_received' do
+  describe '.likes_received' do
     it "returns the number of times the user's tweets have been liked, as an integer" do
       tweets = Client::C.user_timeline(Client::C.user.id)
       expect(User.likes_received(tweets)).to be_an(Integer)
