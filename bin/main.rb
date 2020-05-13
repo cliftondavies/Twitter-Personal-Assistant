@@ -54,10 +54,10 @@ if choice == 'y'
 
   if YAML.load_file('tweets.yml').is_a?(Array)
     # Total retweets received
-    puts "#{User.retweets_received(YAML.load_file('tweets.yml'))} of your tweets have been retweeted."
+    puts " Your tweets have been retweeted #{User.retweets_received(YAML.load_file('tweets.yml'))} time(s)."
 
     # Total likes received
-    puts "Your tweets has been liked #{User.likes_received(YAML.load_file('tweets.yml'))} time(s)."
+    puts "Your tweets have been liked #{User.likes_received(YAML.load_file('tweets.yml'))} time(s)."
   else
     puts 'You have not received any tweet likes or retweets.'
   end
