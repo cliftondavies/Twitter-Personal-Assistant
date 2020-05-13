@@ -18,16 +18,9 @@ describe User do
   end
 
   describe 'like_retweets' do
-    context 'when user has not liked any retweets' do
-      it '' do
-        expect
-      end
-    end
-
-    context 'when user has liked at least one retweet' do
-      it '' do
-        expect
-      end
+    it 'returns retweets that have been liked' do
+      tweet = Client::C.user_timeline(Client::C.user.id, count: 1)
+      expect(User.like_retweets(tweet, tweet).size).to eql(tweet.first.retweet_count)
     end
   end
 end
