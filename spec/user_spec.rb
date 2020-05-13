@@ -40,4 +40,11 @@ describe User do
       expect(User.retweets_received(tweets)).to be_an(Integer)
     end
   end
+
+  describe 'likes_received' do
+    it "returns the number of times the user's tweets have been liked, as an integer" do
+      tweets = Client::C.user_timeline(Client::C.user.id)
+      expect(User.likes_received(tweets)).to be_an(Integer)
+    end
+  end
 end
