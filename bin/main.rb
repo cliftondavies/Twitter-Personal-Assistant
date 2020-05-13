@@ -66,7 +66,7 @@ if reply == 'y'
     User.like_mentions(YAML.load_file('mentions.yml'))
     puts 'Done.'
   else
-    puts '| Checking for unliked retweet... |
+    puts '| Checking for mentions... |
     '
     sleep 2
     User.like_mentions
@@ -113,12 +113,12 @@ if choice == 'y'
   sleep 2
 
   # Total retweets liked
-  if YAML.load_file('fav_tweets.yml').is_a?(Array)
+  if YAML.load_file('mentions.yml').is_a?(Array)
     puts "| Total Mentions Liked: |
-    You have liked #{YAML.load_file('mentions.yml').size} retweet(s) of your tweets.
+    You have liked #{YAML.load_file('mentions.yml').size} mention(s) of your tweets.
     "
   else
-    puts '| You either have not liked, or have not received, any retweets of your tweets |'
+    puts '| You either have not liked, or have not received, any tweet mentions. |'
   end
 else
   puts '| The stats will be here when you need them. |'
