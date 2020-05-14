@@ -38,7 +38,7 @@ if response == 'y'
   puts '| Storing tweet... |
   '
   sleep 2
-  if YAML.load_file('tweets.yml').is_a?(Array) && !YAML.load_file('tweets.yml').empty?
+  if YAML.load_file('tweets.yml').is_a?(Array)
     User.store_tweet(YAML.load_file('tweets.yml'))
   else
     User.store_tweet
@@ -60,7 +60,7 @@ puts ' '
 if reply == 'y'
   puts '| Checking for mentions... |
   '
-  if YAML.load_file('mentions.yml').is_a?(Array) && !YAML.load_file('mentions.yml').empty?
+  if YAML.load_file('mentions.yml').is_a?(Array)
     User.like_mentions(YAML.load_file('mentions.yml'))
   else
     User.like_mentions
