@@ -50,7 +50,7 @@ end
 
 puts "
 -------------
-LIKE RETWEETS
+LIKE MENTIONS
 -------------
 Q: Would you like to favorite some tweets that mentioned you?
 >> Enter 'y' for 'yes', or press any other key to skip
@@ -90,11 +90,11 @@ if choice == 'y'
   "
   sleep 2
   if YAML.load_file('tweets.yml').is_a?(Array)
-    puts "| Total Retweets Received: |
+    puts "| Total Retweets Received Since Setup: |
     Your tweets have been retweeted #{User.retweets_received(YAML.load_file('tweets.yml'))} time(s).
     "
     sleep 2
-    puts "| Total Likes Received: |
+    puts "| Total Likes Received Since Setup: |
     Your tweets have been liked #{User.likes_received(YAML.load_file('tweets.yml'))} time(s).
     "
   else
@@ -103,7 +103,7 @@ if choice == 'y'
   end
   sleep 2
   if YAML.load_file('mentions.yml').is_a?(Array)
-    puts "| Total Mentions Liked: |
+    puts "| Total Mentions Liked Since Setup: |
     You have liked #{YAML.load_file('mentions.yml').size} mention(s) of your tweets.
     "
   else
