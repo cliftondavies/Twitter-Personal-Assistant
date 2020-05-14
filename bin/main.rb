@@ -52,13 +52,13 @@ puts "
 -------------
 LIKE MENTIONS
 -------------
-Q: Would you like to favorite some tweets that mentioned you?
+Q: Would you like to favorite some new tweets that mentioned you?
 >> Enter 'y' for 'yes', or press any other key to skip
 "
 reply = gets.chomp.downcase
 puts ' '
 if reply == 'y'
-  puts '| Checking for mentions... |
+  puts '| Checking for new mentions... |
   '
   if YAML.load_file('mentions.yml').is_a?(Array)
     User.like_mentions(YAML.load_file('mentions.yml'))
@@ -75,7 +75,7 @@ puts "
 ---------------
 ACCOUNT SUMMARY
 ---------------
-Q: Would you like to see your account summary?
+Q: Would you like to see your account summary since setup?
 >> Enter 'y' for 'yes', or press any other key to skip
 "
 choice = gets.chomp.downcase
@@ -91,14 +91,14 @@ if choice == 'y'
   sleep 2
   if YAML.load_file('tweets.yml').is_a?(Array)
     puts "| Total Retweets Received Since Setup: |
-    Your tweets have been retweeted #{User.retweets_received(YAML.load_file('tweets.yml'))} time(s).
+    Your new tweets have been retweeted #{User.retweets_received(YAML.load_file('tweets.yml'))} time(s).
     "
     sleep 2
     puts "| Total Likes Received Since Setup: |
-    Your tweets have been liked #{User.likes_received(YAML.load_file('tweets.yml'))} time(s).
+    Your new tweets have been liked #{User.likes_received(YAML.load_file('tweets.yml'))} time(s).
     "
   else
-    puts '| You have not received any tweet likes or retweets. |
+    puts '| You have not tweeted from the terminal since setup. |
     '
   end
   sleep 2
@@ -107,7 +107,7 @@ if choice == 'y'
     You have liked #{YAML.load_file('mentions.yml').size} mention(s) of your tweets.
     "
   else
-    puts '| You either have not liked, or have not received, any tweet mentions. |'
+    puts '| You either have not liked, or received, any new tweet mentions. |'
   end
 else
   puts '| The stats will be here when you need them. |'
