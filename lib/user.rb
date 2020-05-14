@@ -7,7 +7,11 @@ module User
   def self.store_tweet(tweets = [])
     return YAML.load_file('tweets.yml') if tweets == YAML.load_file('tweets_testdata.yml')
 
-    tweets += Client::C.user_timeline(Client::C.user.id, count: 1)
+    tweets += if tweets.empty?
+                Client::C.user_timeline(Client::C.user.id, count: 1)
+              else
+                Client::C.user_timeline(Client::C.user.id, since_id: tweets.last.id)
+              end
     File.write('tweets.yml', YAML.dump(tweets))
     tweets
   end
