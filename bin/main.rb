@@ -6,6 +6,15 @@ require './lib/client.rb'
 require './lib/user.rb'
 
 puts "
+____________________________________________
+Welcome back, #{Client::C.user.screen_name}!
+............................................
+| Checking for any tweets made directly on Twitter since last tweet from command line... |
+"
+User.store_tweet(YAML.load_file('tweets.yml')) if YAML.load_file('tweets.yml').is_a?(Array)
+puts '| Done. You are now up to date. |'
+
+puts "
 ------
 TWEET
 ------
