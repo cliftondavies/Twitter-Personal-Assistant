@@ -1,13 +1,17 @@
 require 'twitter'
+require 'yaml'
 require './lib/user.rb'
 
 describe User do
-  let(:tweets) { Client::C.user_timeline(Client::C.user.id) }
+  let(:tweets) { YAML.load_file('tweets_testdata.yml') }
 
   describe '.store_tweet' do
     context 'when user makes first tweet' do
       it 'returns an array containing first tweet' do
         expect(User.store_tweet).to be_an(Array)
+        tweets = YAML.load_file('tweets.yml')
+        tweets.pop
+        File.write('tweets.yml', YAML.dump(tweets))
       end
     end
 
@@ -22,12 +26,15 @@ describe User do
     context 'when user has no mentions stored' do
       it 'returns an array with result of running like_mentions' do
         expect(User.like_mentions).to be_an(Array)
+        mentions = YAML.load_file('mentions.yml')
+        mentions.pop
+        File.write('mentions.yml', YAML.dump(mentions))
       end
     end
 
     context 'when user has mentions stored' do
       it 'returns an array with result of running like_mentions' do
-        mentions = Client::C.mentions
+        mentions = YAML.load_file('mentions_testdata.yml')
         expect(User.like_mentions(mentions)).to be_an(Array)
       end
     end

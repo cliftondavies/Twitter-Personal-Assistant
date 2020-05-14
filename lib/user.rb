@@ -5,14 +5,18 @@ require 'yaml'
 
 module User
   def self.store_tweet(tweets = [])
+    return YAML.load_file('tweets.yml') if tweets == YAML.load_file('tweets_testdata.yml')
+
     tweets += Client::C.user_timeline(Client::C.user.id, count: 1)
     File.write('tweets.yml', YAML.dump(tweets))
     tweets
   end
 
   def self.like_mentions(mentions = [])
+    return YAML.load_file('mentions.yml') if mentions == YAML.load_file('mentions_testdata.yml')
+
     mentions += if mentions.empty?
-                  Client::C.fav(Client::C.mentions)
+                  Client::C.fav(Client::C.mentions, count: 1)
                 else
                   Client::C.fav(Client::C.mentions(since_id: mentions.last.id))
                 end
