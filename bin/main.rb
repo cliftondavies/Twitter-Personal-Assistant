@@ -38,7 +38,11 @@ if response == 'y'
   puts '| Storing tweet... |
   '
   sleep 2
-  Client::C.user.tweets_count == 1 ? User.store_tweet : User.store_tweet(YAML.load_file('tweets.yml'))
+  if YAML.load_file('tweets.yml').is_a?(Array) && !YAML.load_file('tweets.yml').empty?
+    User.store_tweet(YAML.load_file('tweets.yml'))
+  else
+    User.store_tweet
+  end
   puts 'Done!'
 else
   puts '| Borrring... You have chosen not to tweet! |'
@@ -56,7 +60,7 @@ puts ' '
 if reply == 'y'
   puts '| Checking for mentions... |
   '
-  if YAML.load_file('mentions.yml').is_a?(Array)
+  if YAML.load_file('mentions.yml').is_a?(Array) && !YAML.load_file('mentions.yml').empty?
     User.like_mentions(YAML.load_file('mentions.yml'))
   else
     User.like_mentions
