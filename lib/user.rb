@@ -11,7 +11,7 @@ module User
     tweets = if tweets.empty?
                Client::C.statusesClient::C.user_timeline(Client::C.user.id, count: 1) + tweets
              else
-               Client::C.user_timeline(Client::C.user.id, since_id: tweets.first.id, exclude_replies: true) + tweets
+               Client::C.user_timeline(Client::C.user.id, since_id: tweets.first.id, include_rts: false) + tweets
              end
     File.write('tweets.yml', YAML.dump(tweets))
     tweets
