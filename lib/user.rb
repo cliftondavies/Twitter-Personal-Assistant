@@ -7,8 +7,9 @@ module User
   def self.store_tweet(tweets = [])
     return YAML.load_file('tweets.yml') if tweets == YAML.load_file('tweets_testdata.yml')
 
+    tweets = Client::C.statuses(tweets)
     tweets = if tweets.empty?
-               Client::C.user_timeline(Client::C.user.id, count: 1) + tweets
+               Client::C.statusesClient::C.user_timeline(Client::C.user.id, count: 1) + tweets
              else
                Client::C.user_timeline(Client::C.user.id, since_id: tweets.first.id, exclude_replies: true) + tweets
              end
@@ -19,10 +20,11 @@ module User
   def self.like_mentions(mentions = [])
     return YAML.load_file('mentions.yml') if mentions == YAML.load_file('mentions_testdata.yml')
 
+    mentions = Client::C.statuses(mentions)
     mentions = if mentions.empty?
-                 Client::C.fav(Client::C.mentions, count: 1) + mentions
+                 (Client::C.fav(Client::C.mentions, count: 1) + mentions)
                else
-                 Client::C.fav(Client::C.mentions(since_id: mentions.first.id)) + mentions
+                 (Client::C.fav(Client::C.mentions(since_id: mentions.first.id)) + mentions)
                end
     File.write('mentions.yml', YAML.dump(mentions))
     mentions
