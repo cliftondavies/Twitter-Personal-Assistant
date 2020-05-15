@@ -7,11 +7,14 @@ require './lib/user.rb'
 
 puts "
 ____________________________________________
-Welcome back, #{Client::C.user.screen_name}!
+Welcome back, @#{Client::C.user.screen_name}!
 ............................................
+
 | Checking for any tweets made directly on Twitter since last tweet from command line... |
+
 "
-User.store_tweet(YAML.load_file('tweets.yml')) if YAML.load_file('tweets.yml').is_a?(Array)
+User.store_tweet(YAML.load_file('tweets.yml')) if YAML.load_file('tweets.yml') # .is_a?(Array)
+sleep 2
 puts '| Done. You are now up to date. |'
 
 puts "
@@ -47,7 +50,7 @@ if response == 'y'
   puts '| Storing tweet... |
   '
   sleep 2
-  if YAML.load_file('tweets.yml').is_a?(Array)
+  if YAML.load_file('tweets.yml') # .is_a?(Array)
     User.store_tweet(YAML.load_file('tweets.yml'))
   else
     User.store_tweet
@@ -69,13 +72,13 @@ puts ' '
 if reply == 'y'
   puts '| Checking for new mentions... |
   '
-  if YAML.load_file('mentions.yml').is_a?(Array)
+  if YAML.load_file('mentions.yml') # .is_a?(Array)
     User.like_mentions(YAML.load_file('mentions.yml'))
   else
     User.like_mentions
   end
   sleep 2
-  puts 'Done.'
+  puts 'Done. You are now up to date.'
 else
   puts '| Nooo?! Those who mentioned you will be disappointed. |'
 end
@@ -98,7 +101,7 @@ if choice == 'y'
   You have tweeted #{Client::C.user.tweets_count} time(s).
   "
   sleep 2
-  if YAML.load_file('tweets.yml').is_a?(Array)
+  if YAML.load_file('tweets.yml') # .is_a?(Array)
     puts "| Total Retweets Received Since First Tweet From Terminal: |
     Your new tweets have been retweeted #{User.retweets_received(YAML.load_file('tweets.yml'))} time(s).
     "
@@ -111,12 +114,12 @@ if choice == 'y'
     '
   end
   sleep 2
-  if YAML.load_file('mentions.yml').is_a?(Array)
+  if YAML.load_file('mentions.yml') && !YAML.load_file('mentions.yml').empty? # .is_a?(Array)
     puts "| Total Mentions Liked Since Setup: |
     You have liked #{YAML.load_file('mentions.yml').size} mention(s) of your tweets.
     "
   else
-    puts '| You either have not liked, or received, any new tweet mentions. |'
+    puts '| You have neither liked, nor received, any new tweet mentions. |'
   end
 else
   puts '| The stats will be here when you need them. |'
