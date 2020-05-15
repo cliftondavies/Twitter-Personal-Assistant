@@ -9,7 +9,7 @@ module User
 
     tweets = Client::C.statuses(tweets)
     tweets = if tweets.empty?
-               Client::C.statusesClient::C.user_timeline(Client::C.user.id, count: 1) + tweets
+               Client::C.user_timeline(Client::C.user.id, count: 1) + tweets
              else
                Client::C.user_timeline(Client::C.user.id, since_id: tweets.first.id, include_rts: false) + tweets
              end
