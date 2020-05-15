@@ -13,7 +13,7 @@ Welcome back, @#{Client::C.user.screen_name}!
 | Checking for any tweets made directly on Twitter since last tweet from command line... |
 
 "
-User.store_tweet(YAML.load_file('tweets.yml')) if YAML.load_file('tweets.yml') # .is_a?(Array)
+User.store_tweet(YAML.load_file('tweets.yml')) if YAML.load_file('tweets.yml')
 sleep 2
 puts '| Done. You are now up to date. |'
 
@@ -50,7 +50,7 @@ if response == 'y'
   puts '| Storing tweet... |
   '
   sleep 2
-  if YAML.load_file('tweets.yml') # .is_a?(Array)
+  if YAML.load_file('tweets.yml')
     User.store_tweet(YAML.load_file('tweets.yml'))
   else
     User.store_tweet
@@ -72,7 +72,7 @@ puts ' '
 if reply == 'y'
   puts '| Checking for new mentions... |
   '
-  if YAML.load_file('mentions.yml') # .is_a?(Array)
+  if YAML.load_file('mentions.yml')
     User.like_mentions(YAML.load_file('mentions.yml'))
   else
     User.like_mentions
@@ -101,7 +101,7 @@ if choice == 'y'
   You have tweeted #{Client::C.user.tweets_count} time(s).
   "
   sleep 2
-  if YAML.load_file('tweets.yml') # .is_a?(Array)
+  if YAML.load_file('tweets.yml')
     puts "| Total Retweets Received Since First Tweet From Terminal: |
     Your new tweets have been retweeted #{User.retweets_received(YAML.load_file('tweets.yml'))} time(s).
     "
@@ -114,7 +114,7 @@ if choice == 'y'
     '
   end
   sleep 2
-  if YAML.load_file('mentions.yml') && !YAML.load_file('mentions.yml').empty? # .is_a?(Array)
+  if YAML.load_file('mentions.yml') && !YAML.load_file('mentions.yml').empty?
     puts "| Total Mentions Liked Since Setup: |
     You have liked #{YAML.load_file('mentions.yml').size} mention(s) of your tweets.
     "
