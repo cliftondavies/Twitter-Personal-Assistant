@@ -99,11 +99,11 @@ if choice == 'y'
   "
   sleep 2
   if YAML.load_file('tweets.yml').is_a?(Array)
-    puts "| Total Retweets Received Since Setup: |
+    puts "| Total Retweets Received Since First Tweet From Terminal: |
     Your new tweets have been retweeted #{User.retweets_received(YAML.load_file('tweets.yml'))} time(s).
     "
     sleep 2
-    puts "| Total Likes Received Since Setup: |
+    puts "| Total Likes Received Since First Tweet From Terminal: |
     Your new tweets have been liked #{User.likes_received(YAML.load_file('tweets.yml'))} time(s).
     "
   else
