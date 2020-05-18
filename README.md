@@ -65,7 +65,7 @@ bundle install
 ```
 6. Add `.env` to your gitignore file, then create a .env file. Copy the template below to your .env file, and fill in your app credentials generated from twitter.
 **NOTE:** This step is important to ensure your credentials remain protected and confidential.
-```
+```ruby
 export API_KEY=YOUR_API_KEY
 export API_KEY_SECRET=YOUR_API_KEY_SECRET
 export ACCESS_TOKEN=YOUR_ACCESS_TOKEN
