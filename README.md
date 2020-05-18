@@ -49,7 +49,7 @@ Once TPA is up and running, it can:
 
 ### Setup
 
-1. [Sign up](https://twitter.com/) for a personal twitter account if you don't have one. Apply for a developer account using your personal account [here](https://developer.twitter.com/). Once approved, follow the instructions to create an app and generate its credentials. You'll need the credentials to successfully run or test the app.
+1. [Sign up](https://twitter.com/) for a personal twitter account if you don't have one. Apply for a developer account using your personal account [here](https://developer.twitter.com/). Once approved, follow the instructions to create an app and generate its credentials. You'll need the credentials to successfully run or test this version of the app.
 2. [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 3. Clone repo into your local environment using your favourite terminal:
 ```
@@ -82,9 +82,10 @@ bin/main.rb
 The Twitter API limits the number of tweets that can be retrieved from a user's timeline to the twenty most recent tweets. To accomodate this TPA starts to keep track of your Twitter activity only after you set it up. Aside from total followers and tweets, all prior activity is ignored. Some future work may include:
 
 - Tweets with media content
-- More robust storage of tweets and mentions, instead of locally updated .yml files.
-- Store all user tweets and mentions before TPA setup.
-- Deployment to Heroku for persistence.
+- More robust storage of tweets and mentions, instead of locally updated .yml files
+- Store all user tweets and mentions before TPA setup
+- Deployment to Heroku for persistence
+- Integrated authentication system to get user credentials automatically
 
 ## :toolbox: Tools & Technologies Used
 
