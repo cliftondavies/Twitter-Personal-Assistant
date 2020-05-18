@@ -2,8 +2,8 @@
 require 'dotenv/load'
 require 'twitter'
 require 'yaml'
-require './lib/client.rb'
-require './lib/user.rb'
+require_relative '../lib/client.rb'
+require_relative '../lib/user.rb'
 
 puts "
 ____________________________________________

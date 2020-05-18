@@ -1,7 +1,7 @@
-require './lib/client.rb'
 require 'dotenv/load'
 require 'twitter'
 require 'yaml'
+require_relative '../lib/client.rb'
 
 module User
   def self.store_tweet(tweets = [])

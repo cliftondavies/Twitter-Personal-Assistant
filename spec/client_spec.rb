@@ -1,5 +1,5 @@
 require 'twitter'
-require './lib/client.rb'
+require_relative '../lib/client.rb'
 
 describe Client do
   describe '.config' do

@@ -1,6 +1,6 @@
 require 'twitter'
 require 'yaml'
-require './lib/user.rb'
+require_relative '../lib/user.rb'
 
 describe User do
   let(:test_tweets) { YAML.load_file('tweets_testdata.yml') }
