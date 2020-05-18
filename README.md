@@ -49,7 +49,7 @@ Once TPA is up and running, it can:
 
 ### Setup
 
-1. [Sign up](https://twitter.com/) for a personal twitter account if you don't have one. Apply for a developer account using your personal account [here](https://developer.twitter.com/). Once approved, follow the instructions to create an app and generate its credentials. You'll need this to access the Twitter API.
+1. [Sign up](https://twitter.com/) for a personal twitter account if you don't have one. Apply for a developer account using your personal account [here](https://developer.twitter.com/). Once approved, follow the instructions to create an app and generate its credentials. You'll need the credentials to successfully run or test the app.
 2. [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 3. Clone repo into your local environment using your favourite terminal:
 ```
@@ -63,7 +63,14 @@ cd directory-name
 ```
 bundle install
 ```
-6. Add `.env` to your gitignore file, then create a .env file. Copy the template from .env.example to the .env file, and fill in your app credentials generated from twitter. **This step is important to ensure your credentials remain protected and confidential**.
+6. Add `.env` to your gitignore file, then create a .env file. Copy the template below to your .env file, and fill in your app credentials generated from twitter.
+**NOTE:** This step is important to ensure your credentials remain protected and confidential.
+```
+export API_KEY=YOUR_API_KEY
+export API_KEY_SECRET=YOUR_API_KEY_SECRET
+export ACCESS_TOKEN=YOUR_ACCESS_TOKEN
+export ACCESS_TOKEN_SECRET=YOUR_ACCESS_TOKEN_SECRET
+```
 7. All set! Now start your TPA app
 ```
 bin/main.rb
