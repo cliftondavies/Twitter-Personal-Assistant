@@ -22,9 +22,9 @@ module User
 
     mentions = Client::C.statuses(mentions)
     mentions = if mentions.empty?
-                 (Client::C.fav(Client::C.mentions, count: 1) + mentions)
+                 Client::C.fav(Client::C.mentions, count: 1) + mentions
                else
-                 (Client::C.fav(Client::C.mentions(since_id: mentions.first.id)) + mentions)
+                 Client::C.fav(Client::C.mentions(since_id: mentions.first.id)) + mentions
                end
     File.write('mentions.yml', YAML.dump(mentions))
     mentions
