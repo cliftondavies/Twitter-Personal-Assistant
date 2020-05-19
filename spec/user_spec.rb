@@ -1,8 +1,29 @@
 require 'twitter'
 require 'yaml'
 require_relative '../lib/user.rb'
+require_relative '../lib/client.rb'
 
 describe User do
+  subject { User.new }
+
+  describe '#username' do
+    it 'returns the screen name of user' do
+      expect(subject.username).to eql(Client::C.user.screen_name)
+    end
+  end
+
+  describe '#followers_count' do
+    it 'returns total followers the user has' do
+      expect(subject.followers_count).to eql(Client::C.user.followers_count)
+    end
+  end
+
+  describe '#tweets_count' do
+    it 'returns total tweets made by user' do
+      expect(subject.tweets_count).to eql(Client::C.user.tweets_count)
+    end
+  end
+
   let(:test_tweets) { YAML.load_file('tweets_testdata.yml') }
 
   describe '.store_tweet' do
