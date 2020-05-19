@@ -1,5 +1,4 @@
 require 'dotenv/load'
-require 'twitter'
 
 class Client
   def self.config
