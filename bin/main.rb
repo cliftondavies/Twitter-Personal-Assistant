@@ -100,7 +100,7 @@ if choice == 'y'
   "
   sleep 2
   puts "| Total Tweets: |
-  You have tweeted #{user.tweets_count} time(s).
+  You have tweeted #{Client::C.user.tweets_count} time(s).
   "
   sleep 2
   if YAML.load_file('tweets.yml')
