@@ -5,9 +5,11 @@ require 'yaml'
 require_relative '../lib/client.rb'
 require_relative '../lib/user.rb'
 
+user = User.new
+
 puts "
 ____________________________________________
-Welcome back, @#{Client::C.user.screen_name}!
+Welcome back, @#{user.username}!
 ............................................
 
 | Checking for any tweets made directly on Twitter since last tweet from command line... |
@@ -94,11 +96,11 @@ choice = gets.chomp.downcase
 puts ' '
 if choice == 'y'
   puts "| Total Followers: |
-  You have #{Client::C.user.followers_count} follower(s).
+  You have #{user.followers_count} follower(s).
   "
   sleep 2
   puts "| Total Tweets: |
-  You have tweeted #{Client::C.user.tweets_count} time(s).
+  You have tweeted #{user.tweets_count} time(s).
   "
   sleep 2
   if YAML.load_file('tweets.yml')
