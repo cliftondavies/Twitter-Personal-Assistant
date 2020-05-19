@@ -1,11 +1,8 @@
 require 'dotenv/load'
+require 'twitter'
 
 class Client
-  C = Twitter::REST::Client.new(config)
-
-  private
-
-  def config
+  def self.config
     {
       consumer_key: ENV['API_KEY'],
       consumer_secret: ENV['API_KEY_SECRET'],
@@ -13,6 +10,8 @@ class Client
       access_token_secret: ENV['ACCESS_TOKEN_SECRET']
     }
   end
+
+  C = Twitter::REST::Client.new(config)
 end
 
 # module Client
