@@ -6,7 +6,7 @@
 # Twitter Personal Assistant
 
 > Enter the Twitter Personal Assistant (TPA)!
-TPA is for developers who wish to engage a bit more with their Twitter following, but who also find it hard to disconnect from their working environment. It enables you to tweet, like mentions and see a summary of your favorite account stats, all from the comfort of your terminal!
+TPA is a CLI for developers who wish to access their Twitter account from the terminal. It enables you to tweet, like mentions and see a summary of your favorite account stats, all from the comfort of your terminal!
 
 ## Functionality
 
