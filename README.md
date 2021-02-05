@@ -41,7 +41,6 @@ Once TPA is up and running, it can:
 ### Dependencies
 
 - Dotenv
-- Rubocop
 - Twitter
 - YAML
 
@@ -90,7 +89,7 @@ The Twitter API limits the number of tweets that can be retrieved from a user's 
 - Ruby
 - RSpec
 - Pry
-- Git/GitHub
+- Git
 - Visual Studio Code
 
 ## Author
