@@ -88,9 +88,6 @@ The Twitter API limits the number of tweets that can be retrieved from a user's 
 
 - Ruby
 - RSpec
-- Pry
-- Git
-- Visual Studio Code
 
 ## Author
 
