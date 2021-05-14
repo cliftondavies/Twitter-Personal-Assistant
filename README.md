@@ -8,6 +8,8 @@
 > Enter the Twitter Personal Assistant (TPA)!
 TPA is a CLI for developers who wish to access their Twitter account from the terminal. It enables you to tweet, like mentions and see a summary of your favorite account stats, all from the comfort of your terminal!
 
+![screenshot](tpa.gif)
+
 ## Functionality
 
 Once TPA is up and running, it can:
